@@ -1,0 +1,206 @@
+{% load static %} {% block extra_css %}
+<!-- DataTables -->
+<link
+  href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- Responsive datatable examples -->
+<link
+  href="{% static 'libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- leaflet Css -->
+<link
+  href="{% static 'libs/leaflet/dist/leaflet.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock %} {% block contents %} {% for message in messages %}
+<input type="hidden" id="login-msg" value="{{message}}" />
+{% endfor %}
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card overflow-hidden">
+      <div class="bg-primary bg-soft">
+        <div class="row">
+          <div class="col-7">
+            <div class="text-primary p-3">
+              <h5 class="text-primary">Welcome Back !</h5>
+              <p>SAJ Dashboard</p>
+            </div>
+          </div>
+          <div class="col-5 align-self-end">
+            <img
+              src="{% static 'images/profile-img.png'%}"
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <p class="text-muted fw-medium">Station</p>
+                <h4 class="mb-0">{{staion_count}}</h4>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-station font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+</div>
+<!-- end row -->
+
+<hr />
+<br />
+<!--Title Row-->
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 class="text-muted fw-medium text-center"><u>Station List</u></h1>
+    </div>
+  </div>
+</div>
+<br />
+<!--end row-->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Station List</h4>
+        <table
+          id="datatable"
+          class="table table-bordered dt-responsive nowrap w-100"
+        >
+          <thead>
+            <tr>
+              <th>Station Name</th>
+              <th>Device ID</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for station in station_list %}
+            <tr>
+              <td>{{station.station_name}}</td>
+              <td>{{station.device_id}}</td>
+              <td>
+                <a href="{% url 'station-data' station.device_id %}">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                  >
+                    Select
+                  </button>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+
+<hr />
+<br />
+<!--Title Row-->
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 class="text-muted fw-medium text-center">
+        <u>All Device Location</u>
+      </h1>
+    </div>
+  </div>
+</div>
+<br />
+<!--end row-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Station Locations</h4>
+        <div id="leaflet-map-group-control" class="leaflet-map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row -->
+
+{% endblock %} {% block extra_javascript %}
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'libs/metismenu/dist/metisMenu.min.js' %}"></script>
+<script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
+<script src="{% static 'libs/node-waves/dist/waves.min.js' %}"></script>
+
+<!-- leaflet plugin -->
+<script src="{% static 'libs/leaflet/dist/leaflet.js' %}"></script>
+
+<!-- leaflet map.init -->
+<script src="{% static 'js/pages/all-station-map.init.js' %}"></script>
+
+<!-- Required datatable js -->
+<script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- Buttons examples -->
+<script src="{% static 'libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'libs/jszip/dist/jszip.min.js' %}"></script>
+
+<script src="{% static 'libs/pdfmake/build/pdfmake.min.js' %}"></script>
+
+<script src="{% static 'libs/pdfmake/build/vfs_fonts.js' %}"></script>
+
+<script src="{% static 'libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+
+<!-- Responsive examples -->
+<script src="{% static 'libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+<!-- Datatable init js -->
+<script src="{% static 'js/pages/datatables.init.js' %}"></script>
+
+<script>
+  let station_details_array = []
+  {% for station in station_list %}
+    station_details_array.push(`{{station.station_name}} - <a href="{% url 'station-data' station.device_id%}">View Details</a>`)
+  {% endfor %}
+  getLocation(station_details_array);
+</script>
+
+{% endblock %}

@@ -1,0 +1,323 @@
+{% extends 'partials/base.html' %} {% load static %} {% block extra_css %}
+<!-- DataTables -->
+<link
+  href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link
+  href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- Responsive datatable examples -->
+<link
+  href="{% static 'libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<!-- leaflet Css -->
+<link
+  href="{% static 'libs/leaflet/dist/leaflet.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock %} {% block contents %}
+<div class="row">
+  <div class="col-xl-12">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">Station Name</h3>
+                <h4 class="text-muted fw-medium">
+                  <strong>{{station_detail.station_name}}</strong>
+                </h4>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-water font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">Device ID</h3>
+                <h4 class="text-muted fw-medium">
+                  <strong>{{station_detail.device_id}}</strong>
+                </h4>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-station font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+    <!-- end row -->
+  </div>
+</div>
+
+<hr />
+
+<!--Latest data-->
+<div class="row">
+  <div class="col-xl-12">
+    <br />
+    <!--Title Row-->
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div>
+          <h1 class="text-muted fw-medium text-center"><u>Latest Data</u></h1>
+          <h4 class="text-muted fw-medium text-center">
+            Last Updated: {{station_data_latest.date_time}}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!--Data ROw-->
+    <div class="row">
+      <!--pH Data-->
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">pH</h3>
+                <h1 class="text-muted fw-medium">
+                  <strong>{{station_data_latest.ph}}</strong>
+                </h1>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-command font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Temperature data-->
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">Temperature</h3>
+                <h1 class="text-muted fw-medium">
+                  <strong>{{station_data_latest.temperature}}&#8451;</strong>
+                </h1>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-command font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Turbidity-->
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">Turbidity</h3>
+                <h1 class="text-muted fw-medium">
+                  <strong>{{station_data_latest.turbidity}} NTU</strong>
+                </h1>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-command font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Ammonia-->
+      <div class="col-md-3">
+        <div class="card mini-stats-wid">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="flex-grow-1">
+                <h3 class="text-muted fw-medium">Ammonia</h3>
+                <h1 class="text-muted fw-medium">
+                  <strong>{{station_data_latest.ammonia}}</strong>
+                </h1>
+              </div>
+
+              <div class="flex-shrink-0 align-self-center">
+                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                  <span class="avatar-title">
+                    <i class="bx bx-command font-size-24"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+</div>
+
+<hr />
+<br />
+<!--Title Row-->
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 class="text-muted fw-medium"><u>Area Chart</u></h1>
+    </div>
+  </div>
+</div>
+<br />
+<!--end row-->
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body">
+        {% comment %}
+        <h4 class="card-title mb-4">Area Chart</h4>
+        {% endcomment %}
+        <div id="area-chart-ph" class="e-charts"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h1>{{statuon_data_latest.ph}}</h1>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Station Data</h4>
+        <table
+          id="datatable"
+          class="table table-bordered dt-responsive nowrap w-100"
+        >
+          <thead>
+            <tr>
+              <th>Device ID</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>pH</th>
+              <th>Temperature</th>
+              <th>Turbidity</th>
+              <th>Ammonia</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for station in station_data %}
+            <tr>
+              <td>{{station.device_name}}</td>
+              <td>{{station.date|date:'d-m-Y'}}</td>
+              <td>{{station.time}}</td>
+              <td>{{station.ph}}</td>
+              <td>{{station.temperature}}</td>
+              <td>{{station.turbidity}}</td>
+              <td>{{station.ammonia}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+<hr />
+<br />
+<!--Title Row-->
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 class="text-muted fw-medium text-center"><u>Device Location</u></h1>
+      <h4 class="text-muted fw-medium text-center">
+        Last Updated: {{station_data_latest.date_time}}
+      </h4>
+    </div>
+  </div>
+</div>
+<br />
+<!--end row-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Station Locations</h4>
+        <div id="leaflet-map-group-control" class="leaflet-map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row -->
+
+<!-- End Page-content -->
+{% endblock %} {% block extra_javascript %}
+<!-- echarts js -->
+<script src="{% static 'libs/echarts/dist/echarts.min.js' %}"></script>
+<!-- echarts init -->
+<script src="{% static 'js/pages/echarts.init.js' %}"></script>
+
+<!-- Required datatable js -->
+<script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- Buttons examples -->
+<script src="{% static 'libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+
+<!-- Responsive examples -->
+<script src="{% static 'libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+
+<!-- Datatable init js -->
+<script src="{% static 'js/pages/datatables.init.js' %}"></script>
+
+<!-- leaflet plugin -->
+<script src="{% static 'libs/leaflet/dist/leaflet.js' %}"></script>
+
+<!-- leaflet map.init -->
+<script src="{% static 'js/pages/station-detail-map.init.js' %}"></script>
+
+<script>
+  getDataByDate({{station_data_latest.device_id}});
+  getLocation({{station_data_latest.device_id}},
+  `{{station_detail.station_name}} -
+  <a href="{% url 'station-data' station_data_latest.device_name%}">View Details</a>`);
+</script>
+{% endblock %}
