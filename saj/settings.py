@@ -227,4 +227,4 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
