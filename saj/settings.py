@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 from django.contrib.messages import constants as messages
 
 
@@ -36,7 +37,7 @@ SECRET_KEY = 'd!m50t)w$$&ff(*pn7%oqw-1yxo+eub*xcxd^8pzo=*2)ynq=w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','saj-dashboard.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','2da188c804ec.ngrok.io','saj-dashboard.herokuapp.com']
 
 
 # Application definition
@@ -125,6 +126,9 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -209,7 +213,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 # login url
 LOGIN_URL = 'account_login'
-SITE_ID = 2
+SITE_ID = 1
 # ACCOUNT_SIGNUP_REDIRECT_URL = "account_logout"
 ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
