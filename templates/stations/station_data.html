@@ -308,8 +308,16 @@
 <!-- Datatable init js -->
 <script src="{% static 'js/pages/datatables.init.js' %}"></script>
 
+{% comment %}
 <!-- leaflet plugin -->
 <script src="{% static 'libs/leaflet/dist/leaflet.js' %}"></script>
+{% endcomment %}
+
+<script
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
+></script>
 
 <!-- leaflet map.init -->
 <script src="{% static 'js/pages/station-detail-map.init.js' %}"></script>
