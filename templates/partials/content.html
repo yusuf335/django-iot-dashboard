@@ -17,7 +17,11 @@
   type="text/css"
 />
 <!-- leaflet Css -->
-<link href="{% static 'libs/leaflet/dist/leaflet.css' %}" />
+<link
+  href="{% static 'libs/leaflet/dist/leaflet.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
 
 {% endblock %} {% block contents %} {% for message in messages %}
 <input type="hidden" id="login-msg" value="{{message}}" />
