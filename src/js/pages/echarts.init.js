@@ -330,7 +330,7 @@ if (option && typeof option === "object") {
 
 const getDataByDate = async function (id) {
   const request = await fetch(
-    `http://saj-dashboard.herokuapp.com//api/data-by-date/${id}`
+    `http://saj-dashboard.herokuapp.com/api/data-by-date/${id}`
   );
   const value = await request.json();
 
