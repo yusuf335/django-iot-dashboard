@@ -329,9 +329,7 @@ if (option && typeof option === "object") {
 }
 
 const getDataByDate = async function (id) {
-  const request = await fetch(
-    `http://saj-dashboard.herokuapp.com/api/data-by-date/${id}`
-  );
+  const request = await fetch(`http://127.0.0.1:8000/api/data-by-date/${id}`);
   const value = await request.json();
 
   const mapPHData = value.map((x) => x.ph);
