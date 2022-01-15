@@ -293,7 +293,10 @@
 <!-- End Page-content -->
 {% endblock %} {% block extra_javascript %}
 <!-- echarts js -->
+{% comment %}
 <script src="{% static 'libs/echarts/dist/echarts.min.js' %}"></script>
+{% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs@1.0.1/dest/cjs/index.min.js"></script>
 <!-- echarts init -->
 <script src="{% static 'js/pages/echarts.init.js' %}"></script>
 
