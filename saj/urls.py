@@ -19,6 +19,8 @@ from saj import views
 from .views import MyPasswordSetView ,MyPasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,5 +45,5 @@ urlpatterns = [
 
     #REST FRAMEWORK URLS
     path('api/', include('stations.api.urls', 'stationData_api')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
