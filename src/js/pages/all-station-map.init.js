@@ -1,6 +1,6 @@
 const getLocation = async function (station_details) {
   const request = await fetch(
-    `saj-dashboard.herokuapp.com/api/all-station-coordinate/`
+    `http://127.0.0.1:8000/api/all-station-coordinate/`
   );
   const value = await request.json();
 

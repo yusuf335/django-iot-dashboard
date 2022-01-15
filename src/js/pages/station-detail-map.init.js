@@ -8,7 +8,7 @@ File: leaflet init js
 
 const getLocation = async function (id, station_name) {
   const request = await fetch(
-    `saj-dashboard.herokuapp.com/api/station-coordinate/${id}`
+    `http://127.0.0.1:8000/api/station-coordinate/${id}`
   );
   const latest_location = await request.json();
   const latitude = latest_location.latitude;
