@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
@@ -225,3 +226,7 @@ ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "none"
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

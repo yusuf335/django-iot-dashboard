@@ -45,5 +45,6 @@ urlpatterns = [
 
     #REST FRAMEWORK URLS
     path('api/', include('stations.api.urls', 'stationData_api')),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
