@@ -18,10 +18,9 @@
 />
 <!-- leaflet Css -->
 <link
+  href="{% static 'libs/leaflet/dist/leaflet.css' %}"
   rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""
+  type="text/css"
 />
 
 {% endblock %} {% block contents %} {% for message in messages %}
@@ -167,16 +166,16 @@
 <script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
 <script src="{% static 'libs/node-waves/dist/waves.min.js' %}"></script>
 
-{% comment %}
 <!-- leaflet plugin -->
 <script src="{% static 'libs/leaflet/dist/leaflet.js' %}"></script>
-{% endcomment %}
 
+{% comment %}
 <script
   src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""
 ></script>
+{% endcomment %}
 
 <!-- leaflet map.init -->
 <script src="{% static 'js/pages/all-station-map.init.js' %}"></script>
