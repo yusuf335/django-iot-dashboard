@@ -154,7 +154,7 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'Asia/Kuala_Lumpur'
 
 USE_I18N = True
 
