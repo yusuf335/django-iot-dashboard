@@ -10109,3 +10109,20 @@ a {
 @keyframes animate-positive {
   0% {
     width: 0; } }
+      background: #fff; }
+
+.animated-progess {
+  position: relative; }
+  .animated-progess .progress-bar {
+    position: relative;
+    border-radius: 6px;
+    -webkit-animation: animate-positive 2s;
+            animation: animate-positive 2s; }
+
+@-webkit-keyframes animate-positive {
+  0% {
+    width: 0; } }
+
+@keyframes animate-positive {
+  0% {
+    width: 0; } }
