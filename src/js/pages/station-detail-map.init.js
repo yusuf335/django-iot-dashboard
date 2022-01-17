@@ -16,7 +16,7 @@ const getLocation = async function (id, station_name) {
 
   var stations = L.layerGroup();
 
-  coordinate = [longitude, latitude];
+  coordinate = [latitude, longitude];
 
   L.marker(coordinate).bindPopup(station_name).addTo(stations).openPopup();
 
