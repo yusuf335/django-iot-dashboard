@@ -7,7 +7,7 @@ const getLocation = async function (station_details) {
   var stations = L.layerGroup();
 
   for (let i = 0; i < value.length; i++) {
-    L.marker([value[i].latitude], value[i].longitude)
+    L.marker([value[i].latitude, value[i].longitude)
       .bindPopup(station_details[i])
       .addTo(stations)
       .openPopup();
